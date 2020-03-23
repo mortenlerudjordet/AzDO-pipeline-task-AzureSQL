@@ -1,11 +1,8 @@
-# Azure DevOps Task for AzureAD
+# Azure DevOps Task for Azure SQL
 
 # Introduction 
 
 This is a WIP project, though the task is in a working condition.
-[It is made possible by building on this version of the Powershell task by Microsoft.](https://github.com/microsoft/azure-pipelines-tasks/tree/master/Tasks/AzurePowerShellV5)
-
-The task is currently using the Powershell module `AzureADPreview`, and powershell code can be written and injected into the task to target the module. It has the same functionality as the builtin Azure Powershell task, though instead of the `Az` module it uses `AzureADPreview` and `MSAL.PS` (authentication) modules.
 
 # Getting Started
 ## To build this extension on your machine and upload it privately to your AzDO account:
