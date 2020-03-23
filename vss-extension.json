@@ -1,0 +1,40 @@
+{
+    "manifestVersion": 1,
+    "id": "AzSQLdbSetAccessMSALTask",
+    "name": "Azure SQL DB Give Access AAD User/Group Task",
+    "version": "0.0.17",
+    "publisher": "leruninfo",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "description": "Give access for AAD User / Group to Azure SQL DB using SP and MSAL authentication",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "repository": {
+        "type": "git",
+        "uri": "https://dev.azure.com/innovationnorway/Applikasjonsutvikling/_git/azd-pipelines-tasks"
+    },
+    "icons": {
+        "default": "images/AzSQLdbSetAccessMSAL.png"
+    },
+    "files": [
+        {
+            "path": "AzSQLdbSetAccessMSAL", "addressable": true
+        }
+    ],
+    "contributions": [
+        {
+            "id": "AzSQLdbSetAccessMSAL",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "AzSQLdbSetAccessMSAL"
+            }
+        }
+    ]
+}
