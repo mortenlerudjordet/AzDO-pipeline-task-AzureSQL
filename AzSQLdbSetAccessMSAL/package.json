@@ -1,0 +1,18 @@
+{
+  "name": "AzSQLdbSetAccessMSAL",
+  "version": "0.0.1",
+  "description": "Give access for AAD User / Group to Azure SQL DB using SP and MSAL authentication",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Morten Lerudjordet",
+  "license": "ISC",
+  "dependencies": {
+    "azure-pipelines-task-lib": "^2.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.7",
+    "@types/q": "^1.5.2"
+  }
+}

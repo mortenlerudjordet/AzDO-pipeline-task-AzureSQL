@@ -1,0 +1,107 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+    "id": "bfb4495f-2931-4aee-b623-5d008213bc46",
+    "name": "AzSQLdbSetAccessMSAL",
+    "friendlyName": "Give access for AAD User / Group to Azure SQL DB using SP and MSAL authentication",
+    "description": "Give access for AAD User / Group to Azure SQL DB using Service Principal and MSAL authentication",
+    "helpMarkDown": "Attention: AzD Service Connection/AAD Service Principal used on task must be server admin on the Azure SQL Server before running. Also the FW on the Azure SQL Server must allow communication from the agent running the task.",
+    "category": "Utility",
+	"visibility": [
+        "Release"
+    ],
+    "author": "Morten Lerudjordet",
+	"preview": true,
+    "version": {
+        "Major": 0,
+        "Minor": 5,
+        "Patch": 0
+    },
+	"minimumAgentVersion": "2.115.0",
+    "inputs": [
+        {
+            "name": "AzDConnectedServiceNameARM",
+            "type": "connectedService:AzureRM",
+            "label": "AzD Service Connection for ARM",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "AzD Service Connection(Azure AD Service Principal) to use for connecting to Azure SQL",
+            "properties": {
+                "EndpointFilterRule": "ScopeLevel != AzureMLWorkspace"
+            }
+        },
+		{
+		  "name": "AzSQLServerHostName",
+		  "type": "string",
+		  "label": "Azure SQL Server Host Name",
+		  "defaultValue": "",
+		  "required": true,
+		  "helpMarkDown": "Host name of the Azure SQL Server in the format: dbservername.database.windows.net"
+		},
+		{
+		  "name": "AzSQLDBName",
+		  "type": "string",
+		  "label": "Azure SQL DB Name",
+		  "defaultValue": "",
+		  "required": true,
+		  "helpMarkDown": "Name of the azure SQL database to connect to"
+        },
+        {
+            "name": "QueryTimeout",
+            "type": "string",
+            "label": "Connection Query Timeout in seconds",
+            "defaultValue": "30",
+            "required": false,
+            "helpMarkDown": "The query timeout in seconds"
+        },
+        {
+            "name": "Encrypt",
+            "type": "pickList",
+            "label": "Encrypt Connection",
+            "defaultValue": "true",
+            "required": false,
+            "options": {
+                "true": "true",
+                "false": "false"
+            },
+            "helpMarkDown": "Encrypt SQL Connection: true or false"
+        },
+        {
+            "name": "DBrwAADObjectName",
+            "type": "string",
+            "label": "AAD Object Name of User or Group to be given Read/Write access",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Object Name of either Azure AD User or Group to be given Read/Write access"
+        },
+        {
+            "name": "DBrwAADObjectID",
+            "type": "string",
+            "label": "AAD Object ID of User or Group to be given Read/Write access",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Object ID of either Azure AD User or Group to be given Read/Write access"
+        },
+        {
+            "name": "DBownerAADObjectName",
+            "type": "string",
+            "label": "AAD Object Name of User or Group to be given DBowner access",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Object Name of either Azure AD User or Group to be given DBowner access"
+        },
+        {
+            "name": "DBownerAADObjectID",
+            "type": "string",
+            "label": "AAD Object ID of User or Group to be given DBowner access",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Object ID of either Azure AD User or Group to be given DBowner access"
+        }
+    ],
+    "instanceNameFormat": "Set Azure SQL DB Access",
+    "execution": {
+        "PowerShell3": {
+            "target": "AzSQLdbSetAccessMSAL.ps1"
+        }
+    }
+}
